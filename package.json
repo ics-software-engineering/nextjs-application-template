@@ -16,12 +16,15 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@ngneat/falso": "^8.0.2",
-    "@prisma/client": "^5.16.1",
+    "@prisma/adapter-pg": "^7.4.2",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^6.0.0",
     "bootstrap": "^5.3.3",
+    "dotenv": "^17.3.1",
     "multiselect-react-dropdown": "^2.0.25",
     "next": "^16.1.6",
     "next-auth": "^4.24.7",
+    "pg": "^8.19.0",
     "react": "^18",
     "react-bootstrap": "^2.10.4",
     "react-bootstrap-icons": "^1.11.4",
@@ -35,6 +38,7 @@
     "@playwright/test": "^1.48.2",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^25.3.3",
+    "@types/pg": "^8.18.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.0.2",
@@ -42,7 +46,8 @@
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.3.1",
     "prettier-eslint": "^16.3.0",
-    "prisma": "^5.19.1",
-    "typescript": "^5.4.5"
+    "prisma": "^6.19.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
