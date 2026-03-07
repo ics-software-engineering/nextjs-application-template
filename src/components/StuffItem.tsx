@@ -1,4 +1,4 @@
-import { Stuff } from '@prisma/client';
+import { Stuff } from '../../generated/prisma/client';
 import Link from 'next/link';
 
 /* Renders a single row in the List Stuff table. See list/page.tsx. */

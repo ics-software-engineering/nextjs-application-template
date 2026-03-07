@@ -1,15 +1,14 @@
-import { getServerSession } from 'next-auth';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import StuffItemAdmin from '@/components/StuffItemAdmin';
 import { prisma } from '@/lib/prisma';
 import { adminProtectedPage } from '@/lib/page-protection';
-import authOptions from '@/lib/authOptions';
+import { auth } from '@/lib/auth';
 
 const AdminPage = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   adminProtectedPage(
     session as {
-      user: { email: string; id: string; randomKey: string };
+      user: { email: string; id: string; name: string };
     } | null,
   );
   const stuff = await prisma.stuff.findMany({});

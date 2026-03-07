@@ -5,7 +5,7 @@ import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 
 /** The sign in page. */
 const SignIn = () => {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       email: { value: string };
@@ -13,15 +13,11 @@ const SignIn = () => {
     };
     const email = target.email.value;
     const password = target.password.value;
-    const result = await signIn('credentials', {
+    await signIn('credentials', {
       callbackUrl: '/list',
       email,
       password,
     });
-
-    if (result?.error) {
-      console.error('Sign in failed: ', result.error);
-    }
   };
 
   return (
