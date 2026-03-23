@@ -84,21 +84,14 @@ async function authenticateWithUI(
       await submitButton.click();
     }
 
-    // Wait for navigation to complete
-    await page.waitForLoadState('networkidle');
 
-    // Verify authentication was successful
-    await expect(async () => {
-      const authState = await Promise.race([
-        page.getByText(email).isVisible().then((visible) => ({ success: visible })),
-        page.getByRole('button', { name: email }).isVisible().then((visible) => ({ success: visible })),
-        page.getByText('Sign out').isVisible().then((visible) => ({ success: visible })),
-        page.getByRole('button', { name: 'Sign out' }).isVisible().then((visible) => ({ success: visible })),
-        new Promise<{ success: boolean }>((resolve) => setTimeout(() => resolve({ success: false }), 5000)),
-      ]);
-
-      expect(authState.success).toBeTruthy();
-    }).toPass({ timeout: 10000 });
+    // Wait for a clear post-login indicator (user button or sign out button)
+    const userButton = page.getByRole('button', { name: email });
+    const signOutButton = page.getByRole('button', { name: /sign out/i });
+    await Promise.any([
+      expect(userButton).toBeVisible({ timeout: 10000 }),
+      expect(signOutButton).toBeVisible({ timeout: 10000 })
+    ]);
 
     // Save session for future tests
     const cookies = await page.context().cookies();

@@ -54,8 +54,6 @@ jobs:
         run: npm run lint
       - name: Build Next.js application
         run: npm run build
-      - name: Install wait-on
-        run: npm install --save-dev wait-on
       - name: Start the app
         run: npm start &
       - name: Wait for Next.js server to be ready
