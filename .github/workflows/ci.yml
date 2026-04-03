@@ -28,8 +28,8 @@ jobs:
     
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/playwright_test
-      AUTH_SECRET="thisisanauthsecretfortestingonly"
-      AUTH_URL=http://localhost:3000
+      AUTH_SECRET: thisisanauthsecretfortestingonly
+      AUTH_URL: http://localhost:3000
       PLAYWRIGHT_TEST_BASE_URL: http://localhost:3000
       NODE_ENV: test
     
@@ -68,3 +68,4 @@ jobs:
         if: always() && env.ACT != 'true'
         run: |
           echo "::notice::To view the Playwright test report, download the 'playwright-report' artifact from the workflow run's summary page in GitHub Actions."
+     
