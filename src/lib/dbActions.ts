@@ -17,7 +17,7 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
     condition = 'poor';
   } else if (stuff.condition === 'excellent') {
     condition = 'excellent';
-  } else {
+  } else if (stuff.condition === 'fair') {
     condition = 'fair';
   }
   await prisma.stuff.create({
